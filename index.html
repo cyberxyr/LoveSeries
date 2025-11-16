@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="100 Reasons Why I Love You – A forever gift from @henryonfrontend"/>
+  <meta property="og:title" content="100 Reasons Why I Love You 💕"/>
+  <meta property="og:description" content="Every single thing about you makes my world complete."/>
+  <meta property="og:image" content="https://i.ibb.co/0jZ3k8Q/og-preview.jpg"/>
+  <meta property="og:url" content="https://100reasons.henry.love"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <title>100 Reasons Why I Love You 💕</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  
+  <style>
+    :root {
+      --bg-start: #8b0016;
+      --bg-end: #2e0005;
+      --card-bg: #a0001c;
+      --card-hover: #c2185b;
+      --text: #fff5f5;
+      --accent: #ff6b81;
+      --heart: #ff1744;
+      --glow: rgba(255, 23, 68, 0.4);
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating Hearts Background */
+    .hearts-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart-float {
+      position: absolute;
+      color: rgba(255, 105, 180, 0.15);
+      font-size: 1.5rem;
+      animation: float 15s infinite linear;
+      opacity: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      background: linear-gradient(90deg, #fff, #ff6b81, #ff1744);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    .dedication {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Grid */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.6rem;
+      padding: 1.5rem 0;
+    }
+
+    /* Cards */
+    .reason-card {
+      background: var(--card-bg);
+      padding: 1.6rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px var(--shadow);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 105, 180, 0.15);
+      backdrop-filter: blur(5px);
+    }
+    .reason-card::before {
+      content: attr(data-number);
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s;
+    }
+    .reason-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px var(--glow);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+    .reason-card:hover::before {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .heart-icon {
+      color: var(--heart);
+      font-size: 1.4rem;
+      margin-right: 0.5rem;
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+
+    .reason-text {
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-top: 0.3rem;
+    }
+
+    /* Final Card */
+    .final-reason {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #c2185b, #880e4f);
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: 600;
+      padding: 2.5rem 1.5rem;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(255, 23, 68, 0.5);
+      position: relative;
+      overflow: hidden;
+      animation: glow 4s ease-in-out infinite alternate;
+    }
+    .final-reason::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: shimmer 8s infinite;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 15px 40px rgba(255,23,68,0.5); }
+      to { box-shadow: 0 20px 50px rgba(255,23,68,0.7); }
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: #ff6b81;
+    }
+    .social {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .social a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 3rem; }
+      .reasons-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .reason-card { padding: 1.3rem; }
+      .final-reason { font-size: 1.4rem; padding: 2rem 1rem; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2.5rem; }
+      header { padding: 2rem 1rem 1.5rem; }
+    }
+
+    /* Print Friendly */
+    @media print {
+      body { background: white; color: black; }
+      .reason-card, .final-reason { border: 1px solid #ccc; box-shadow: none; }
+      .heart-float, .heart-icon { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Hearts -->
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <header>
+    <h1>100 Reasons Why I Love You</h1>
+    <p class="subtitle">Every moment, every detail, every heartbeat — it's all you.</p>
+    <p class="dedication">To the love of my life, my forever home 💞</p>
+  </header>
+
+  <div class="container">
+    <div class="reasons-grid">
+      <!-- Auto-generated cards will go here via JS -->
+    </div>
+
+    <div class="final-reason">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">💖</div>
+      <strong>100. Because you're you — and that's more than enough.</strong>
+      <p style="margin-top: 1rem; font-size: 1.1rem; opacity: 0.9; font-weight: normal;">
+        You're my beginning, my middle, and my always.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Made with every beat of my heart</p>
+    <div class="signature">Forever yours,<br>@henryonfrontend</div>
+    <p class="social">Built with love in <strong>Nigeria</strong> 🇳🇬 | <a href="https://x.com/henryonfrontend" target="_blank">@henryonfrontend</a></p>
+  </footer>
+
+  <script>
+    // 100 Reasons Array
+    const reasons = [
+      "Your smile.", "Your eyes.", "The way you look at me.", "The way you calm my storms.",
+      "Your patience.", "Your kindness.", "Your voice.", "The way you say my name.",
+      "How you care.", "How you stay.", "Your honesty.", "Your silence.", "Your touch.",
+      "Your hugs.", "The way you listen.", "How you see through me.", "Your little surprises.",
+      "Your big heart.", "The way you believe in me.", "Your laugh.", "The way you cry.",
+      "Your soul.", "The way you fight for us.", "Your late night talks.", "The way you apologize.",
+      "How you make things better.", "The way you forgive.", "How you understand.", "Your warmth.",
+      "Your flaws.", "The way you remember details.", "Your random texts.", "How you hold my hand.",
+      "The way you miss me.", "Your protectiveness.", "Your dreams.", "Your fear of losing me.",
+      "Your voice notes.", "The way you make me laugh.", "The way you look sleepy.", "Your crazy ideas.",
+      "How you comfort me.", "The way you respect me.", "The way you look in my eyes.", "Your little jealous moments.",
+      "Your shyness.", "Your strength.", "Your soft heart.", "How you value small things.",
+      "How you say \"I'm here\".", "How you wait.", "How you explain calmly.", "The way you say \"I love you\".",
+      "How you fight fair.", "The way you get emotional.", "The way you love music.", "Your loyalty.",
+      "Your insecurities.", "Your growth.", "Your attention to me.", "Your stubbornness.",
+      "Your hands.", "Your heartbeats.", "How you let me be me.", "How you accept my darkness.",
+      "The way you inspire me.", "The way you kiss.", "How you look when you're mad.", "How you fix broken things.",
+      "How you pray.", "The way you laugh at my jokes.", "The way you heal me.", "How you love me despite everything.",
+      "Your inner child.", "Your courage.", "The way you pull me closer.", "The way you whisper.",
+      "The way you react to compliments.", "The way you express love.", "The way you talk about your day.",
+      "The way you sit in silence with me.", "The way you get excited.", "The way you trust me.",
+      "How you've changed me.", "The way you know what I'm not saying.", "Your sleepy voice.",
+      "The way you say goodnight.", "The way you touch my soul.", "The way you calm my anxiety.",
+      "The way you remind me of home.", "The way you give me peace.", "The way you still choose me.",
+      "The way you look at stars.", "The way you laugh with your eyes.", "The way you ask if I've eaten.",
+      "The way you remember my pain.", "The way you call me yours.", "How you stay my prayers.",
+      "The way you love me even when I'm unlovable."
+    ];
+
+    // Generate Cards
+    const grid = document.querySelector('.reasons-grid');
+    reasons.forEach((reason, i) => {
+      const card = document.createElement('div');
+      card.className = 'reason-card';
+      card.setAttribute('data-number', i + 1);
+      card.innerHTML = `
+        <span class="heart-icon">❤️</span>
+        <div class="reason-text">${reason}</div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Floating Hearts Animation
+    const heartsBg = document.getElementById('heartsBg');
+    const heartEmoji = ['❤️', '💖', '💕', '💞', '✨', '🫶'];
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart-float';
+      heart.textContent = heartEmoji[Math.floor(Math.random() * heartEmoji.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      heartsBg.appendChild(heart);
+      setTimeout(() => heart.remove(), 20000);
+    }, 800);
+  </script>
+</body>
+</html>
